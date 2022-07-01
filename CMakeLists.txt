@@ -23,6 +23,21 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(message_filters REQUIRED)
 
+# Build
+include_directories(include)
+
+add_executable(broadcaster_node
+  src/broadcaster_node.cpp
+  src/broadcaster.cpp
+)
+ament_target_dependencies(broadcaster_node
+  rclcpp
+  std_msgs
+  tf2
+  tf2_ros
+  message_filters
+)
+
 # Install
 install(DIRECTORY
   launch

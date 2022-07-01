@@ -20,9 +20,15 @@ namespace tf
         broadcaster();
         ~broadcaster();
     private:
-        tf2_ros::StaticTransformBroadcaster tf_broadcaster_;
-        rclcpp::Subscription<std_msgs::msg::Bool> sub_;
-        void tfBroadcasterCB(const std_msgs::msg::Bool::SharedPtr msg) const;
+        void loadROS2Param();
+        void tfBroadcasterCB(const std_msgs::msg::Bool::SharedPtr msg);
+
+        std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_broadcaster_;
+        rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr sub_;
+
+        std::string fixed_frame_;
+        std::string odom_frame_;
+        geometry_msgs::msg::TransformStamped pose;
     };
 
 } // namespace tf
