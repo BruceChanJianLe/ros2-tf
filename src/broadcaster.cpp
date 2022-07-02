@@ -10,6 +10,12 @@ namespace tf
 
         tf_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster> (this);
         sub_ = this->create_subscription<std_msgs::msg::Bool>("reset_pose", 1, [this](const std_msgs::msg::Bool::SharedPtr msg){this->tfBroadcasterCB(msg);});
+
+        RCLCPP_INFO_STREAM(
+            this->get_logger(),
+            this->get_name()
+            << ": Started tf broadcaster node."
+        );
     }
 
     broadcaster::~broadcaster()
