@@ -38,7 +38,24 @@ ament_target_dependencies(broadcaster_node
   message_filters
 )
 
+add_executable(listener_node
+  src/listener_node.cpp
+  src/listener.cpp
+)
+ament_target_dependencies(listener_node
+  rclcpp
+  std_msgs
+  tf2
+  tf2_ros
+  message_filters
+)
+
 # Install
+install(TARGETS
+  broadcaster_node
+  listener_node
+  DESTINATION lib/${PROJECT_NAME}
+)
 install(DIRECTORY
   launch
   rviz2
