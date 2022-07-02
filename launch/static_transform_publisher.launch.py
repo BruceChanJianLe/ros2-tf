@@ -8,7 +8,7 @@ def generate_launch_description():
         package='tf2_ros',
         executable='static_transform_publisher',
         name='map_to_odom',
-        arguments=['1', '0', '0', '0', '0', '0', 'map', 'odom']
+        arguments=['1', '1', '0', '0', '0', '0', 'map', 'odom']
     )
 
     # Define launch description
